@@ -14,26 +14,26 @@
 ## x - matrix data
 
 makeCacheMatrix <- function(x = matrix()) {
-    cache <- NULL
-    
-    set <- function(y) {
-        x <<- y
-        cache <<- NULL
-    }
-    
-    get <- function() x
-    
-    setResult <- function(z) cache <<- z
-    
-    getResult <- function() cache
-    
-    
-    list(
-        set = set,
-        get = get,
-        setres = setResult,
-        getres = getResult
-    )
+	cache <- NULL
+	
+	set <- function(y) {
+		x <<- y
+		cache <<- NULL
+	}
+	
+	get <- function() x
+	
+	setResult <- function(z) cache <<- z
+	
+	getResult <- function() cache
+	
+	
+	list(
+		set = set,
+		get = get,
+		setres = setResult,
+		getres = getResult
+	)
 }
 
 
@@ -41,13 +41,13 @@ makeCacheMatrix <- function(x = matrix()) {
 ## or computes the inverse, caches it and returns it.
 
 cacheSolve <- function(x, ...) {
-    cachedInversed <- x$getres()
-    if ( !is.null(cachedInversed) ) {
-        message("getting cached data")
-    } else {
-    	  message("calculating data")
-    	  cachedInversed <- solve(x$get())
-    	  x$setres(cachedInversed)
-    }
-    cachedInversed
+	cachedInversed <- x$getres()
+	if ( !is.null(cachedInversed) ) {
+		message("getting cached data")
+	} else {
+		message("calculating data")
+		cachedInversed <- solve(x$get())
+		x$setres(cachedInversed)
+	}
+	cachedInversed
 }
